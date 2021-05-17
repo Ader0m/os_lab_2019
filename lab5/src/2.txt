@@ -1,0 +1,1 @@
+./parallel_factorial --k=3 --pnum=3 --mod=100
