@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
   struct Server *to = malloc(sizeof(struct Server) * servers_num);
   for (int i = 0; i < servers_num; i++)
   {
-      fscanf(fp, "%s : %d\n", to[i].ip, &to[i].port);
+      fscanf(fp, "%d\n", &to[i].port);
   }
 
   pthread_t threads[servers_num];
@@ -145,7 +145,7 @@ int main(int argc, char **argv) {
   uint64_t answer = 1;
   uint64_t part_size = k / servers_num;
   for (int i = 0; i < servers_num; i++) {
-    struct hostent *hostname = gethostbyname(to[i].ip);
+    struct hostent *hostname = gethostbyname("127.0.0.1");
     if (hostname == NULL) {
       fprintf(stderr, "gethostbyname failed with %s\n", to[i].ip);
       exit(1);
